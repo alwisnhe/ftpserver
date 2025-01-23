@@ -4,10 +4,10 @@
 mkdir -p cert
 
 # Gera a chave privada
-openssl genpkey -algorithm RSA -out cert/ftps_local_hub.key -pkeyopt rsa_keygen_bits:2048
+openssl genpkey -algorithm RSA -out cert/ftps_local.key -pkeyopt rsa_keygen_bits:2048
 
 # Gera o certificado autoassinado
-openssl req -new -x509 -key cert/ftps_local_hub.key -out cert/ftps_local_hub.crt -days 365 -subj "/CN=127.0.0.1"
+openssl req -new -x509 -key cert/ftps_local.key -out cert/ftps_local.crt -days 365 -subj "/CN=127.0.0.1"
 
 echo "Certificado e chave gerados em $(pwd)/cert"
 
