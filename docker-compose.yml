@@ -6,8 +6,8 @@ services:
     container_name: alwisnhe/ftpsserver
     network_mode: "host"
     environment:
-      - FTPS_CERTFILE=/app/cert/ftps_local_hub.crt
-      - FTPS_KEYFILE=/app/cert/ftps_local_hub.key
+      - FTPS_CERTFILE=/app/cert/ftps_local.crt
+      - FTPS_KEYFILE=/app/cert/ftps_local.key
       - FTPS_ENDERECO=0.0.0.0
       - FTPS_PORTA=2121
       - FTPS_USUARIO=usuario
