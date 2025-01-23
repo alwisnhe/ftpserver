@@ -135,4 +135,4 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou env
 
 ## Contato
 
-Para mais informações, entre em contato com seu-email@example.com.
+Para mais informações, entre em contato com alwisnhe@gmail.com
