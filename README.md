@@ -34,6 +34,8 @@ export FTPS_PORTA=21
 export FTPS_USUARIO=usuario
 export FTPS_SENHA=senha
 export FTPS_DIRETORIO=/path/to/directory
+export FTPS_MINPORTA=21100
+export FTPS_MAXPORTA=21110
 
 python3 src/ftps-server.py
 ```
@@ -83,6 +85,8 @@ As seguintes variáveis de ambiente são usadas para configurar o servidor FTPS:
 - `FTPS_USUARIO`: Nome de usuário para autenticação no servidor FTPS.
 - `FTPS_SENHA`: Senha para autenticação no servidor FTPS.
 - `FTPS_DIRETORIO`: Diretório raiz para o servidor FTPS.
+- `FTPS_MINPORTA`: Porta passiva inicial - Portas necessárias para serem também liberadas no docker
+- `FTPS_MAXPORTA`: Porta passiva final - Portas necessárias para serem também liberadas no docker
 
 ### Exemplo de Uso
 
@@ -118,6 +122,8 @@ services:
       - FTPS_USUARIO=usuario
       - FTPS_SENHA=senha
       - FTPS_DIRETORIO=/path/to/directory
+      - FTPS_MINPORTA=21100
+      - FTPS_MAXPORTA=21110
     ports:
       - "2121:2121"
     volumes:
