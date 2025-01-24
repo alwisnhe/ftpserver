@@ -13,6 +13,8 @@ class FTPSServer:
         self.usuario = os.getenv("FTPS_USUARIO")
         self.senha = os.getenv("FTPS_SENHA")
         self.diretorio = os.getenv("FTPS_DIRETORIO")
+        self.minport = int(os.getenv("FTPS_MINPORT", 21100))
+        self.maxport = int(os.getenv("FTPS_MAXPORT", 21110))
 
         # imprimir no console as variáveis de ambiente
         print("\n")
@@ -24,6 +26,8 @@ class FTPSServer:
         print(f"FTPS_USUARIO: {self.usuario}")
         print(f"FTPS_SENHA: {self.senha}")
         print(f"FTPS_DIRETORIO: {self.diretorio}")
+        print(f"FTPS_MINPORT: {self.minport}")
+        print(f"FTPS_MAXPORT: {self.maxport}")
         
         # Validar que os parâmetros obrigatórios estão definidos
         if not all([self.certfile, self.keyfile, self.usuario, self.senha, self.diretorio]):
@@ -44,6 +48,7 @@ class FTPSServer:
         handler.certfile = self.certfile  # Certificado SSL
         handler.keyfile = self.keyfile    # Chave privada
         handler.authorizer = authorizer
+        handler.passive_ports = range(self.minport, self.maxport)
 
         return handler
 
