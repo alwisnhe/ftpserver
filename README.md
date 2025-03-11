@@ -53,7 +53,7 @@ make build
 Suba os serviços definidos no `docker-compose.yml`:
 
 ```sh
-make up
+make run-docker-compose
 ```
 
 ## Derrubar os Serviços
@@ -61,7 +61,7 @@ make up
 Derrube os serviços definidos no `docker-compose.yml`:
 
 ```sh
-make down
+make down-docker-compose
 ```
 
 ## Limpar Diretórios de Dados e Certificados
@@ -70,6 +70,22 @@ Limpe os diretórios de dados e certificados:
 
 ```sh
 make clean
+```
+
+## Mostrar log do serviço ftpsserver
+
+Mostrar log do serviço ftpsserver
+
+```sh
+make logftp
+```
+
+## Parar o serviço ftpsserver
+
+Parar o serviço ftpsserver
+
+```sh
+make stop
 ```
 
 ## Uso
@@ -93,7 +109,7 @@ As seguintes variáveis de ambiente são usadas para configurar o servidor FTPS:
 Subir os serviços:
 
 ```sh
-make up
+make run-docker-compose
 ```
 
 Acessar o servidor FTPS:
@@ -103,7 +119,7 @@ Use um cliente FTPS para se conectar ao servidor usando o endereço IP do host e
 Derrubar os serviços:
 
 ```sh
-make down
+make down-docker-compose
 ```
 
 ## Estrutura do Arquivo `docker-compose.yml`
@@ -112,7 +128,7 @@ make down
 version: '3'
 services:
   ftps:
-    image: ftps-server
+    image: alwisnhe/ftpsserver
     build: .
     environment:
       - FTPS_CERTFILE=/path/to/certfile.pem
@@ -126,6 +142,8 @@ services:
       - FTPS_MAXPORTA=21110
     ports:
       - "2121:2121"
+      - "21:21"
+      - "21100-21110:21100-21110"
     volumes:
       - ./data:/data
       - ./certs:/certs
