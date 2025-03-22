@@ -21,6 +21,7 @@ run:
 	FTPS_MINPORT=$(FTPS_MINPORT) \
 	FTPS_MAXPORT=$(FTPS_MAXPORT) \
 	python3 src/ftps-server.py
+
 build:
 	docker build -t ftpsserver .
 
@@ -45,9 +46,11 @@ run-docker:
 run-docker-compose:
 	docker-compose up -d
 
+down-docker-compose:
+	docker-compose down
+
 logftp:
 	docker logs -f ftpsserver
-
 
 stop:
 	docker stop ftpsserver
